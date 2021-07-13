@@ -14,7 +14,7 @@ var autocost = 10;
 var clickpower = 1;
 var clickpowercost = 30;
 
-//Function
+//Functions
 const updateUI = () => {
     moneyHeading.innerHTML = `Money: ${money}`
     autoHeading.innerHTML = `Autoclickers: ${auto}`
