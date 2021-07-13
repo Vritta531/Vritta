@@ -61,10 +61,10 @@ clickpowerbutton.addEventListener("click", () => {
         clickpowervalue.innerHTML = `Click power: ${clickpower}`
     }
 });
-autoclickerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Autoclicker makes money for you | 1 autoclicker makes 1 money every 1000ms`
+clickpowerbutton.addEventListener("mouseover", () => {
+    infoText.innerHTML = `Increases click power by 1`
 });
-autoclickerbutton.addEventListener("mouseout", () => {
+clickpowerbutton.addEventListener("mouseout", () => {
     mouseout();
 });
 
