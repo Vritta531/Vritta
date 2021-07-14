@@ -53,7 +53,7 @@ autoclickerbutton.addEventListener("mouseout", () => {
 
 //Click power button
 clickpowerbutton.addEventListener("click", () => {
-    if(money >= autocost) {
+    if(money >= clickpowercost) {
         money -= clickpowercost;
         clickpower += 1;
         clickpowercost = clickpowercost*2
