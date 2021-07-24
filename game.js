@@ -113,8 +113,8 @@ for (var i = 0; i < appBanners.length; i ++) {
 
 //Upgrades
 uppickaxe.addEventListener("click", () => {
-    if(money>=20) {
-        money -= 20;
+    if(money>=1000) {
+        money -= 1000;
         uppickaxebought = 1;
         uppickaxe.style.display = 'none';
         var appBanners = document.getElementsByClassName('stoneclass'); //Hiding all stoneclass things
