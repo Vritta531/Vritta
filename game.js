@@ -95,10 +95,10 @@ clickpowerbutton.addEventListener("mouseout", () => {
 });
 
 //Stone things
-//var appBanners = document.getElementsByClassName('stoneclass'); //Hiding all stoneclass things
-//for (var i = 0; i < appBanners.length; i ++) {
- //   appBanners[i].style.display = 'none';
-//}
+var appBanners = document.getElementsByClassName('stoneclass'); //Hiding all stoneclass things
+for (var i = 0; i < appBanners.length; i ++) {
+    appBanners[i].style.display = 'none';
+}
 
 //Game Loops
 window.setInterval(() => {
