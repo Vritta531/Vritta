@@ -113,9 +113,5 @@ for (var i = 0; i < appBanners.length; i ++) {
 }};
 
 //Upgrades
-uppickaxe.addEventListener("click", () => {
-        money -= 20;
-        uppickaxebought = 1;
-        uppickaxe.style.display = 'none';
-});
+
 
