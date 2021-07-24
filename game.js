@@ -112,6 +112,11 @@ for (var i = 0; i < appBanners.length; i ++) {
     appBanners[i].style.display = 'none';
 }};
 
-//Upgrades
-
-
+//Ugrades
+uppickaxe.addEventListener("click", () => {
+    if(money>=1000) {
+        money -= 1000;
+        uppickaxebought = 1;
+        uppickaxe.style.display = 'none';
+    }
+})
