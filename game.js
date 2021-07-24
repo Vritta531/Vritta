@@ -106,17 +106,20 @@ clickpowerbutton.addEventListener("mouseout", () => {
 });
 
 //Stone things
-if (uppickaxebought<1){
 var appBanners = document.getElementsByClassName('stoneclass'); //Hiding all stoneclass things
 for (var i = 0; i < appBanners.length; i ++) {
     appBanners[i].style.display = 'none';
-}};
+}
 
-//Ugrades
+//Upgrades
 uppickaxe.addEventListener("click", () => {
-    if(money>=1000) {
-        money -= 1000;
+    if(money>=20) {
+        money -= 20;
         uppickaxebought = 1;
         uppickaxe.style.display = 'none';
+        var appBanners = document.getElementsByClassName('stoneclass'); //Hiding all stoneclass things
+for (var i = 0; i < appBanners.length; i ++) {
+    appBanners[i].style.display = 'block';
+}
     }
 })
