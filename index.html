@@ -11,26 +11,27 @@
 <body>
     <!-- Tab -->
     <div class="navbar">
-        <button class="tablinks" onclick="openCity(event, 'Home')" id="defaultOpen">Home</button>
-        <button class="tablinks" onclick="openCity(event, 'Inventory')">Inventory</button>
-        <button class="tablinks" onclick="openCity(event, 'Shop')">Shop</button>
+        <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen">Home</button>
+        <button class="tablink" onclick="openPage('Inventory', this, 'gray')">Inventory</button>
+        <button class="tablink" onclick="openPage('Shop', this, 'gray')">Shop</button>
+        <button class="tablink" onclick="openPage('Settings', this, 'gray')">Settings</button>
       </div>
       <!-- Tab content -->
-<div id="Home" class="tabcontent">
+<div id="Home" class="tabcontent">  <!-- Make sure content is BELOW navbar-->
 
-<h1 id="money">Wood: 0</h1>
-<h1 class="stoneclass" id="stone">Stone: 0</h1>
+    <h1 id="money">Wood: 0</h1>
+    <h1 class="stoneclass" id="stone">Stone: 0</h1>
 
 <div>
-<button id="moneybutton">Chop wood</button>
-<button id="autobutton">Autochopper || 10 wood</button>
-<button id="clickpowerbutton">Increase axe power by 1 || 30 wood</button>
+    <button id="moneybutton">Chop wood</button>
+    <button id="autobutton">Autochopper || 10 wood</button>
+    <button id="clickpowerbutton">Increase axe power by 1 || 30 wood</button>
 </div>
 
 <div class="stoneclass">
-<button id="pickaxebutton">Get stone</button>
-<button id="autostone">Automatic Stone Collector || 30 stone</button>
-<button id="pickaxepowerbutton">Increase pickaxe power by 1 || 50 stone</button>
+    <button id="pickaxebutton">Get stone</button>
+    <button id="autostone">Automatic Stone Collector || 30 stone</button>
+    <button id="pickaxepowerbutton">Increase pickaxe power by 1 || 50 stone</button>
 </div>
 
 <!-- info div -->
@@ -50,12 +51,17 @@
 <div id="Inventory" class="tabcontent">
     <h3>Inventory</h3>
     <p>Work in progress</p>
-  </div>
+</div>
   
-  <div id="Shop" class="tabcontent">
+<div id="Shop" class="tabcontent">
     <h3>Shop</h3>
     <button id="uppickaxe">Pickaxe || 1000 Wood</button>
-  </div>
+</div>
+
+<div id="Settings" class="tabcontent">
+    <h3>Settings</h3>
+    <h3>Work in progress...</h3>
+</div>
 
 </body>
 </html>
