@@ -26,6 +26,14 @@ div {
     margin: 10px;
 }
 
+.green {
+    color:rgb(22, 109, 22);
+}
+
+.blue {
+    color: rgb(48, 92, 175);
+}
+
 .navbar {
     overflow: hidden;
     background-color: #202421;

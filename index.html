@@ -18,18 +18,29 @@
       <!-- Tab content -->
 <div id="Home" class="tabcontent">
 
-<h1 id="money">Money: 0</h1>
-<button id="moneybutton">Make money</button>
-<button id="autobutton">Autoclicker || 10 money</button>
-<button id="clickpowerbutton">Increase click power by 1 || 30 money</button>
-    <!-- info div -->
+<h1 id="money">Wood: 0</h1>
+<h1 class="stoneclass" id="stone">Stone: 0</h1>
+
+<div>
+<button id="moneybutton">Chop wood</button>
+<button id="autobutton">Autochopper || 10 wood</button>
+<button id="clickpowerbutton">Increase axe power by 1 || 30 wood</button>
+</div>
+
+<div class="stoneclass">
+<button id="pickaxebutton">Get stone</button>
+<button id="autostone">Automatic Stone Collector || 30 stone</button>
+<button id="picaxepowerbutton">Increase pickaxe power by 1 || 50 stone</button>
+</div>
+
+<!-- info div -->
 <div>
     <h3 id="info">Hover over something for more info</h2>
 </div>
     <!-- stats div -->
 <div>
-    <h4 id="clickpower">Click power: 1</h4>
-    <h4 id="autoclicker">Autoclickers: 0</h4>
+    <h4 class="green" id="clickpower">Axe power: 1</h4>
+    <h4 class="blue" id="autoclicker">Autochoppers: 0</h4>
 </div>
     <!-- js file link -->
 <script src="game.js"></script>
@@ -43,7 +54,7 @@
   
   <div id="Shop" class="tabcontent">
     <h3>Shop</h3>
-    <p>Work in progress</p>
+    <button id="uppickaxe">Pickaxe || 1000 Wood</button>
   </div>
 
 </body>

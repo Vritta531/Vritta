@@ -6,6 +6,7 @@ const autoclickerbutton = document.querySelector("#autobutton");
 const infoText = document.querySelector("#info");
 const clickpowerbutton = document.querySelector("#clickpowerbutton")
 const clickpowervalue = document.querySelector("#clickpower")
+const uppickaxe = document.querySelector("#uppickaxe")
 
 //Game Variables
 let money = 0;
@@ -13,11 +14,12 @@ let auto = 0;
 var autocost = 10;
 var clickpower = 1;
 var clickpowercost = 30;
+var stone = 0;
 
 //Functions
 const updateUI = () => {
-    moneyHeading.innerHTML = `Money: ${money}`
-    autoHeading.innerHTML = `Autoclickers: ${auto}`
+    moneyHeading.innerHTML = `Wood: ${money}`
+    autoHeading.innerHTML = `Autochoppers: ${auto}`
 };
 const mouseout = () => {
     infoText.innerHTML = `Hover over something for more info`
@@ -53,7 +55,7 @@ moneybutton.addEventListener("click", () => {
     updateUI();
 });
 moneybutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Click this button to make money`
+    infoText.innerHTML = `Click this button to chop wood`
 });
 moneybutton.addEventListener("mouseout", () => {
     mouseout();
@@ -65,11 +67,11 @@ autoclickerbutton.addEventListener("click", () => {
         money -= autocost;
         auto += 1;
         autocost = autocost*2
-        autoclickerbutton.innerHTML = `Autoclicker || ${autocost} money`
+        autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`
     }
 });
 autoclickerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Autoclicker makes money for you | 1 autoclicker makes 1 money every 1000ms`
+    infoText.innerHTML = `Autochopper chops wood for you | 1 autochopper chops 1 wood every 1000ms`
 });
 autoclickerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -81,16 +83,22 @@ clickpowerbutton.addEventListener("click", () => {
         money -= clickpowercost;
         clickpower += 1;
         clickpowercost = clickpowercost*2
-        clickpowerbutton.innerHTML = `Increase click power by 1 || ${clickpowercost} money`
-        clickpowervalue.innerHTML = `Click power: ${clickpower}`
+        clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`
+        clickpowervalue.innerHTML = `Axe power: ${clickpower}`
     }
 });
 clickpowerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Increases click power by 1`
+    infoText.innerHTML = `Increases axe power by 1`
 });
 clickpowerbutton.addEventListener("mouseout", () => {
     mouseout();
 });
+
+//Stone things
+var appBanners = document.getElementsByClassName('stoneclass'); //Hiding all stoneclass things
+for (var i = 0; i < appBanners.length; i ++) {
+    appBanners[i].style.display = 'none';
+}
 
 //Game Loops
 window.setInterval(() => {
