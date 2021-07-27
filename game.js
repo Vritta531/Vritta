@@ -22,7 +22,7 @@ var auto = 0;
 var autocost = 10;
 var additionalclickpower = 0;
 var clickpowermultiplier = 1;
-var clickpower = (1+additionalclickpower)*clickpowermultiplier;
+var clickpower = ((1+additionalclickpower)*clickpowermultiplier);
 var clickpowercost = 30;
 var stone = 0;
 var autostone = 0;
@@ -33,12 +33,14 @@ var pickaxepower = 1+additionalpickaxepower;
 
 //Functions
 const updateUI = () => {
-    moneyHeading.innerHTML = `Wood: ${money}`
-    autoHeading.innerHTML = `Autochoppers: ${auto}`
-    stoneHeading.innerHTML = `Stone: ${stone}`
+    moneyHeading.innerHTML = `Wood: ${money}`;
+    autoHeading.innerHTML = `Autochoppers: ${auto}`;
+    stoneHeading.innerHTML = `Stone: ${stone}`;
+    clickpower = ((1+additionalclickpower)*clickpowermultiplier);
+    clickpowervalue.innerHTML = `Axe power: ${clickpower}`;
 };
 const mouseout = () => {
-    infoText.innerHTML = `Hover over something for more info`
+    infoText.innerHTML = `Hover over something for more info`;
 };
 
 //Game Loops
@@ -82,7 +84,7 @@ moneybutton.addEventListener("click", () => {
     updateUI();
 });
 moneybutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Click this button to chop wood`
+    infoText.innerHTML = `Click this button to chop wood`;
 });
 moneybutton.addEventListener("mouseout", () => {
     mouseout();
@@ -93,12 +95,12 @@ autoclickerbutton.addEventListener("click", () => {
     if(money >= autocost) {
         money -= autocost;
         auto += 1;
-        autocost = autocost*2
-        autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`
+        autocost = autocost*2;
+        autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
     }
 });
 autoclickerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Autochopper chops wood for you | 1 autochopper chops 1 wood every 1000ms`
+    infoText.innerHTML = `Autochopper chops wood for you | 1 autochopper chops 1 wood every 1000ms`;
 });
 autoclickerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -108,14 +110,13 @@ autoclickerbutton.addEventListener("mouseout", () => {
 clickpowerbutton.addEventListener("click", () => {
     if(money >= clickpowercost) {
         money -= clickpowercost;
-        clickpower += 1;
-        clickpowercost = clickpowercost*2
-        clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`
-        clickpowervalue.innerHTML = `Axe power: ${clickpower}`
+        additionalclickpower += 1;
+        clickpowercost = clickpowercost*2;
+        clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
     }
 });
 clickpowerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Increases axe power by 1`
+    infoText.innerHTML = `Increases axe power by 1`;
 });
 clickpowerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -133,7 +134,7 @@ pickaxebutton.addEventListener("click", () => {
     updateUI();
 });
 pickaxebutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Click this button to gather stone`
+    infoText.innerHTML = `Click this button to gather stone`;
 });
 pickaxebutton.addEventListener("mouseout", () => {
     mouseout();
@@ -150,7 +151,7 @@ autostonecollector.addEventListener("click", () => {
     }
 });
 autostonecollector.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Automatic stone collector | 1 ASC gathers 1 stone every 1000ms`
+    infoText.innerHTML = `Automatic stone collector | 1 ASC gathers 1 stone every 1000ms`;
 });
 autostonecollector.addEventListener("mouseout", () => {
     mouseout();
@@ -161,13 +162,13 @@ pickaxepowerbutton.addEventListener("click", () => {
     if(stone >= pickaxepowercost) {
         stone -= pickaxepowercost;
         pickaxepower += 1;
-        pickaxepowercost = pickaxepowercost*2
-        pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`
-        pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`
+        pickaxepowercost = pickaxepowercost*2;
+        pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
+        pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
     }
 });
 pickaxepowerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Increases pickaxe power by 1`
+    infoText.innerHTML = `Increases pickaxe power by 1`;
 });
 pickaxepowerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -185,6 +186,7 @@ for (var i = 0; i < appBanners.length; i ++) {
     }
 });
 
+//Click power multiplier
 upclickpowermultiplier.addEventListener("click", () => {
     if(money>=666) {
         money -= 666;
