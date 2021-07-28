@@ -60,9 +60,10 @@ window.setInterval(() => {
     totalresources += autopower;
     totalresources += autostone;
     if (totalresources >= resourcepopupvalue){
-    window.alert("You gathered " + resourcepopupvalue + " total resources! Congratulations!");
+    window.alert("You gathered " + resourcepopupvalue + " total resources! Congratulations! Your axe power multiplier is now increased by 5!");
     resourcepopupvalue = resourcepopupvalue*2;
     progressbardivide = progressbardivide*2;
+    clickpowermultiplier += 5;
     }
 }, 1000);
 
