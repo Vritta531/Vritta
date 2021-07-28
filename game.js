@@ -15,10 +15,13 @@ const addclickpwr = document.querySelector("#addclickpwrstat")
 const pickaxebutton = document.querySelector("#pickaxebutton")
 const autostonecollector = document.querySelector("#autostone")
 const pickaxepowerbutton = document.querySelector("#pickaxepowerbutton")
+const upautochoppermultiplier = document.querySelector("#upautochoppermultiplier")
+const lightmode = document.querySelector("#lightmode")
 
 //Game Variables
 var money = 0;
 var auto = 0;
+var autopower = 0;
 var autocost = 10;
 var additionalclickpower = 0;
 var clickpowermultiplier = 1;
@@ -30,6 +33,11 @@ var autostonecost = 50;
 var pickaxepowercost = 100;
 var additionalpickaxepower = 0;
 var pickaxepower = 1+additionalpickaxepower;
+var totalresources = 0;
+var automultiplier = 1;
+var progressbardivide = 1;
+var progressbarvalue = ((totalresources/1000)/progressbardivide);
+var resourcepopupvalue = 100000;
 
 //Functions
 const updateUI = () => {
@@ -37,7 +45,9 @@ const updateUI = () => {
     autoHeading.innerHTML = `Autochoppers: ${auto}`;
     stoneHeading.innerHTML = `Stone: ${stone}`;
     clickpower = ((1+additionalclickpower)*clickpowermultiplier);
+    progressbarvalue = ((totalresources/1000)/progressbardivide);
     clickpowervalue.innerHTML = `Axe power: ${clickpower}`;
+    autopower = (auto*automultiplier);
 };
 const mouseout = () => {
     infoText.innerHTML = `Hover over something for more info`;
@@ -45,12 +55,20 @@ const mouseout = () => {
 
 //Game Loops
 window.setInterval(() => {
-    money += auto;
+    money += autopower;
     stone += autostone;
+    totalresources += autopower;
+    totalresources += autostone;
+    if (totalresources >= resourcepopupvalue){
+    window.alert("You gathered " + resourcepopupvalue + " total resources! Congratulations!");
+    resourcepopupvalue = resourcepopupvalue*2;
+    progressbardivide = progressbardivide*2;
+    }
 }, 1000);
 
 window.setInterval(() => {
     updateUI();
+    changeProgress();
 }, 20);
 
 //Navbar,  Tabs
@@ -81,6 +99,7 @@ function openPage(pageName, elmnt, color) {
 //Make money button
 moneybutton.addEventListener("click", () => {
     money += clickpower;
+    totalresources += clickpower;
     updateUI();
 });
 moneybutton.addEventListener("mouseover", () => {
@@ -98,6 +117,7 @@ autoclickerbutton.addEventListener("click", () => {
         autocost = autocost*2;
         autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
     }
+    else{window.alert("You don't have enough resources!");}
 });
 autoclickerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Autochopper chops wood for you | 1 autochopper chops 1 wood every 1000ms`;
@@ -114,6 +134,7 @@ clickpowerbutton.addEventListener("click", () => {
         clickpowercost = clickpowercost*2;
         clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
     }
+    else{window.alert("You don't have enough resources!");}
 });
 clickpowerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Increases axe power by 1`;
@@ -149,6 +170,7 @@ autostonecollector.addEventListener("click", () => {
         autostonecollector.innerHTML = `Automatic stone collector || ${autocost} wood`
         autostonecollectorstat.innerHTML = `Automatic stone collectors: ${autostone}`
     }
+    else{window.alert("You don't have enough resources!");}
 });
 autostonecollector.addEventListener("mouseover", () => {
     infoText.innerHTML = `Automatic stone collector | 1 ASC gathers 1 stone every 1000ms`;
@@ -166,6 +188,7 @@ pickaxepowerbutton.addEventListener("click", () => {
         pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
         pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
     }
+    else{window.alert("You don't have enough resources!");}
 });
 pickaxepowerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Increases pickaxe power by 1`;
@@ -175,6 +198,7 @@ pickaxepowerbutton.addEventListener("mouseout", () => {
 });
 
 //Upgrades
+//Pickaxe
 uppickaxe.addEventListener("click", () => {
     if(money>=1000) {
         money -= 1000;
@@ -184,6 +208,7 @@ for (var i = 0; i < appBanners.length; i ++) {
     appBanners[i].style.display = 'block';
 }
     }
+    else{window.alert("You don't have enough resources!");}
 });
 
 //Click power multiplier
@@ -192,4 +217,27 @@ upclickpowermultiplier.addEventListener("click", () => {
         money -= 666;
         clickpowermultiplier += 1;
         upclickpowermultiplier.style.display = 'none';
-    }});
+    }
+    else{window.alert("You don't have enough resources!");}
+});
+
+//Autochopper multiplier
+upautochoppermultiplier.addEventListener("click", () => {
+    if(money>=1234 && stone>= 321) {
+        money -= 1234;
+        stone -= 321;
+        automultiplier += 1;
+        upautochoppermultiplier.style.display = 'none';
+    }
+    else{window.alert("You don't have enough resources!");}
+})
+
+//Settings
+
+
+    //Progress bar
+const progressbar = document.querySelector(".progress");
+
+const changeProgress = (progress) => {
+  progressbar.style.width = `${progressbarvalue}%`;
+};

@@ -10,6 +10,10 @@
 </head>
 <body>
 
+    <div class="progress-container">
+        <div class="progress"></div>
+      </div>
+
     <!-- Tab -->
     <div class="navbar">
         <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen">Home</button>
@@ -19,10 +23,8 @@
       </div>
       <!-- Tab content -->
 <div id="Home" class="tabcontent">  <!-- Make sure content is BELOW navbar-->
-
     <h1 id="money">Wood: 0</h1>
     <h1 class="stoneclass" id="stone">Stone: 0</h1>
-
 <div>
     <button id="moneybutton">Chop wood</button>
     <button id="autobutton">Autochopper || 10 wood</button>
@@ -59,10 +61,11 @@
     <h3>Shop</h3>
     <button id="uppickaxe">Pickaxe || 1000 Wood</button>
     <button id="upclickpowermultiplier">Multiply axe power by 2 || 666 Wood</button>
+    <button id="upautochoppermultiplier">Multiply autochopper production by 2 || 1234 Wood & 321 Stone</button>
 </div>
 
 <div id="Settings" class="tabcontent">
-    <h3>Settings</h3>
+    <h2>Settings</h2>
     <h3>Work in progress...</h3>
 </div>
 
