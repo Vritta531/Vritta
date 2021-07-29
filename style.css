@@ -83,6 +83,14 @@ div {
   width: 50%;
 }
 
+#money{
+  color:rgb(216, 191, 48);
+}
+
+#stone{
+  color:rgb(113, 147, 148);
+}
+
 #pickaxebutton{
   color:rgb(113, 147, 148);
 }
