@@ -76,3 +76,9 @@ div {
   padding: 60px 10px;
   height: 100%;
 }
+
+.savegameint {
+  position: absolute;
+  bottom: 10px;
+  width: 50%;
+}
