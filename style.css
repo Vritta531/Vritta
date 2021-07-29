@@ -7,7 +7,7 @@
 
   .progress-container {
     height: 0.8rem;
-    width: 32rem;
+    width: 99%;
     border-radius: 0.4rem;
   
     background: #202421;
@@ -44,12 +44,12 @@ div {
     margin: 10px;
 }
 
-.green {
-    color:rgb(22, 109, 22);
+.wood {
+    color:rgb(216, 191, 48);
 }
 
 .blue {
-    color: rgb(48, 92, 175);
+    color: rgb(59, 124, 245);
 }
 
 /* Style tab links */
@@ -81,4 +81,35 @@ div {
   position: absolute;
   bottom: 10px;
   width: 50%;
+}
+
+#pickaxebutton{
+  color:rgb(113, 147, 148)
+}
+
+#autostone{
+  color:coral
+}
+
+#uppickaxe{
+  color:rgb(113, 147, 148)
+}
+
+#pickaxepowerbutton{
+  color:rgb(113, 147, 148)
+}
+#upclickpowermultiplier{
+  color:rgb(216, 191, 48);
+}
+
+#upautochoppermultiplier{
+  color: rgb(59, 124, 245);
+}
+
+#pickaxepowerstat{
+  color:rgb(113, 147, 148)
+}
+
+#autostonecollectorstat{
+  color:coral
 }

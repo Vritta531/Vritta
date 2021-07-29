@@ -2,23 +2,25 @@
 const moneyHeading = document.querySelector("#money");
 const moneybutton = document.querySelector("#moneybutton");
 const autoHeading = document.querySelector("#autoclicker");
-const autostonecollectorstat = document.querySelector("#autostonecollectorstat")
-const pickaxepowerstat = document.querySelector("#pickaxepowerstat")
+const autostonecollectorstat = document.querySelector("#autostonecollectorstat");
+const pickaxepowerstat = document.querySelector("#pickaxepowerstat");
 const autoclickerbutton = document.querySelector("#autobutton");
 const infoText = document.querySelector("#info");
-const clickpowerbutton = document.querySelector("#clickpowerbutton")
-const clickpowervalue = document.querySelector("#clickpower")
-const uppickaxe = document.querySelector("#uppickaxe")
-const stoneHeading = document.querySelector("#stone")
-const upclickpowermultiplier = document.querySelector("#upclickpowermultiplier")
-const addclickpwr = document.querySelector("#addclickpwrstat")
-const pickaxebutton = document.querySelector("#pickaxebutton")
-const autostonecollector = document.querySelector("#autostone")
-const pickaxepowerbutton = document.querySelector("#pickaxepowerbutton")
-const upautochoppermultiplier = document.querySelector("#upautochoppermultiplier")
-const savebutton = document.querySelector("#savebutton")
-const resetbutton = document.querySelector("#resetbutton")
-const savegameint = document.querySelector("#savegameint")
+const clickpowerbutton = document.querySelector("#clickpowerbutton");
+const clickpowervalue = document.querySelector("#clickpower");
+const uppickaxe = document.querySelector("#uppickaxe");
+const stoneHeading = document.querySelector("#stone");
+const upclickpowermultiplier = document.querySelector("#upclickpowermultiplier");
+const addclickpwr = document.querySelector("#addclickpwrstat");
+const pickaxebutton = document.querySelector("#pickaxebutton");
+const autostonecollector = document.querySelector("#autostone");
+const pickaxepowerbutton = document.querySelector("#pickaxepowerbutton");
+const upautochoppermultiplier = document.querySelector("#upautochoppermultiplier");
+const savebutton = document.querySelector("#savebutton");
+const resetbutton = document.querySelector("#resetbutton");
+const savegameint = document.querySelector("#savegameint");
+const upclickpowermultiplier1 = document.querySelector("#upclickpowermultiplier1");
+const uppickaxepowermultiplier = document.querySelector("#uppickaxepowermultiplier");
 
 //Game Variables
 var wood = 0;
@@ -34,7 +36,8 @@ var autostone = 0;
 var autostonecost = 50;
 var pickaxepowercost = 100;
 var additionalpickaxepower = 0;
-var pickaxepower = 1+additionalpickaxepower;
+var pickaxepowermultiplier = 1;
+var pickaxepower = ((1+additionalpickaxepower)*pickaxepowermultiplier);
 var totalresources = 0;
 var automultiplier = 1;
 var progressbardivide = 1;
@@ -44,6 +47,8 @@ var isthegamesaved = 0;
 var uppickaxebought = 0;
 var upclickpowermultiplierbought = 0;
 var upautochoppermultiplierbought = 0;
+var upclickpowermultiplierbought1 = 0;
+var uppickaxepowermultiplierbought = 0;
 var gamesavedago = 0;
 
 var select = document.getElementById('savegameintervalsetting');//Save game interval value from html
@@ -76,21 +81,17 @@ resourcepopupvalue = JSON.parse(localStorage.getItem('resourcepopupvalue'));
 uppickaxebought = JSON.parse(localStorage.getItem('uppickaxebought'));
 upclickpowermultiplierbought = JSON.parse(localStorage.getItem('upclickpowermultiplierbought'));
 upautochoppermultiplierbought = JSON.parse(localStorage.getItem('upautochoppermultiplierbought'));
+upclickpowermultiplierbought1 = JSON.parse(localStorage.getItem('upclickpowermultiplierbought1'));
 value = JSON.parse(localStorage.getItem('value'));
+uppickaxepowermultiplierbought = JSON.parse(localStorage.getItem('uppickaxepowermultiplierbought'));
 };
 
 //Loading upgrades state . bought or not
 if (uppickaxebought == 1){uppickaxe.style.display = 'none';};
 if (upclickpowermultiplierbought == 1){upclickpowermultiplier.style.display = 'none';};
 if (upautochoppermultiplierbought == 1){upautochoppermultiplier.style.display = 'none';};
-
-//Loading costs
-autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
-clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
-autostonecollector.innerHTML = `Automatic stone collector || ${autostonecost} stone`;
-autostonecollectorstat.innerHTML = `Automatic stone collectors: ${autostone}`;
-pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
-pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
+if (upclickpowermultiplierbought1 == 1){upclickpowermultiplier1.style.display = 'none';};
+if (uppickaxepowermultiplierbought == 1){uppickaxepowermultiplier.style.display = 'none';};
 
 //Functions
 const updateUI = () => {
@@ -98,8 +99,15 @@ const updateUI = () => {
     autoHeading.innerHTML = `Autochoppers: ${auto}`;
     stoneHeading.innerHTML = `Stone: ${stone}`;
     clickpower = ((1+additionalclickpower)*clickpowermultiplier);
+    pickaxepower = ((1+additionalpickaxepower)*pickaxepowermultiplier);
     progressbarvalue = ((totalresources/1000)/progressbardivide);
     clickpowervalue.innerHTML = `Axe power: ${clickpower}`;
+    autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
+    clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
+    autostonecollector.innerHTML = `Automatic stone collector || ${autostonecost} stone`;
+    autostonecollectorstat.innerHTML = `Automatic stone collectors: ${autostone}`;
+    pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
+    pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
     autopower = (auto*automultiplier);
 };
 const mouseout = () => {
@@ -130,6 +138,8 @@ const savegame = () => {
     localStorage.setItem('uppickaxebought', JSON.stringify(uppickaxebought));
     localStorage.setItem('upclickpowermultiplierbought', JSON.stringify(upclickpowermultiplierbought));
     localStorage.setItem('upautochoppermultiplierbought', JSON.stringify(upautochoppermultiplierbought));
+    localStorage.setItem('upclickpowermultiplierbought1', JSON.stringify(upclickpowermultiplierbought1));
+    localStorage.setItem('uppickaxepowermultiplierbought', JSON.stringify(uppickaxepowermultiplierbought));
     localStorage.setItem('value', JSON.stringify(value));
         isthegamesaved = 1;
     localStorage.setItem('isthegamesaved', JSON.stringify(isthegamesaved));
@@ -150,10 +160,11 @@ window.setInterval(() => {
     totalresources += autopower;
     totalresources += autostone;
     if (totalresources >= resourcepopupvalue){
-    window.alert("You gathered " + resourcepopupvalue + " total resources! Congratulations! Your axe power multiplier is now increased by 5!");
+    window.alert("You gathered " + resourcepopupvalue + " total resources! Congratulations! Your click power multipliers are now increased by 5!");
     resourcepopupvalue = resourcepopupvalue*2;
     progressbardivide = progressbardivide*2;
     clickpowermultiplier += 5;
+    pickaxepowermultiplier += 5;
     }
     gamesavedago += 1;
     savegameint.innerHTML = `Game saved ${gamesavedago} seconds ago`
@@ -280,7 +291,7 @@ autostonecollector.addEventListener("mouseout", () => {
 pickaxepowerbutton.addEventListener("click", () => {
     if(stone >= pickaxepowercost) {
         stone -= pickaxepowercost;
-        pickaxepower += 1;
+        additionalpickaxepower += 1;
         pickaxepowercost = pickaxepowercost*2;
         pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
         pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
@@ -331,6 +342,29 @@ upautochoppermultiplier.addEventListener("click", () => {
     }
     else{window.alert("You don't have enough resources!");}
 })
+
+//Axe power multiplier 1
+upclickpowermultiplier1.addEventListener("click", () => {
+    if(wood>=5000 && stone>=2000) {
+        wood -= 5000;
+        stone -= 2000;
+        upclickpowermultiplierbought1 = 1;
+        clickpowermultiplier += 1;
+        upclickpowermultiplier1.style.display = 'none';
+    }
+    else{window.alert("You don't have enough resources!");}
+});
+
+//Pickaxe power multiplier
+uppickaxepowermultiplier.addEventListener("click", () => {
+    if(stone>=1000) {
+        stone -= 1000;
+        uppickaxepowermultiplierbought = 1;
+        pickaxepowermultiplier += 1;
+        uppickaxepowermultiplier.style.display = 'none';
+    }
+    else{window.alert("You don't have enough resources!");}
+});
 
 //Settings
 //Save button

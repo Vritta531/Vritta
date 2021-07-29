@@ -26,9 +26,9 @@
     <h1 id="money">Wood: 0</h1>
     <h1 class="stoneclass" id="stone">Stone: 0</h1>
 <div>
-    <button id="moneybutton">Chop wood</button>
-    <button id="autobutton">Autochopper || 10 wood</button>
-    <button id="clickpowerbutton">Increase axe power by 1 || 30 wood</button>
+    <button class="wood" id="moneybutton">Chop wood</button>
+    <button class="blue" id="autobutton">Autochopper || 10 wood</button>
+    <button class="wood" id="clickpowerbutton">Increase axe power by 1 || 30 wood</button>
 </div>
 
 <div class="stoneclass">
@@ -45,7 +45,7 @@
 </div>
     <!-- stats div -->
 <div>
-    <h4 class="green" id="clickpower">Axe power: 1</h4>
+    <h4 class="wood" id="clickpower">Axe power: 1</h4>
     <h4 class="blue" id="autoclicker">Autochoppers: 0</h4>
     <h4 class="stoneclass" id="pickaxepowerstat">Pickaxe power: 0</h4>
     <h4 class="stoneclass" id="autostonecollectorstat">Automatic stone collectors: 0</h4>
@@ -65,6 +65,9 @@
     <button id="uppickaxe">Pickaxe || 1000 Wood</button>
     <button id="upclickpowermultiplier">Multiply axe power by 2 || 666 Wood</button>
     <button id="upautochoppermultiplier">Multiply autochopper production by 2 || 1234 Wood & 321 Stone</button>
+    <button id="uppickaxepowermultiplier">Multiply pickaxe power by 2 || 1000 Stone</button>
+    <button id="upclickpowermultiplier1">Multiply axe power by 2 || 5000 Wood & 2000 Stone</button>
+    
 </div>
 
 <div id="Settings" class="tabcontent">
@@ -72,6 +75,7 @@
     <button id="savebutton">Save progress</button>
     <button id="resetbutton">Reset progress</button>
 
+    <!-- Save game interval setting-->
     <label for="savegameintervalsetting">Progress save interval:</label>
 <select name="savegameintervalsetting" id="savegameintervalsetting">
   <option value="30000">30 seconds</option>
