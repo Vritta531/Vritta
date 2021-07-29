@@ -84,19 +84,19 @@ div {
 }
 
 #pickaxebutton{
-  color:rgb(113, 147, 148)
+  color:rgb(113, 147, 148);
 }
 
 #autostone{
-  color:coral
+  color:coral;
 }
 
 #uppickaxe{
-  color:rgb(113, 147, 148)
+  color:rgb(113, 147, 148);
 }
 
 #pickaxepowerbutton{
-  color:rgb(113, 147, 148)
+  color:rgb(113, 147, 148);
 }
 #upclickpowermultiplier{
   color:rgb(216, 191, 48);
@@ -106,10 +106,18 @@ div {
   color: rgb(59, 124, 245);
 }
 
+#upclickpowermultiplier1{
+  color:rgb(216, 191, 48);
+}
+
+#uppickaxepowermultiplier{
+  color:rgb(113, 147, 148);
+}
+
 #pickaxepowerstat{
-  color:rgb(113, 147, 148)
+  color:rgb(113, 147, 148);
 }
 
 #autostonecollectorstat{
-  color:coral
+  color:coral;
 }
