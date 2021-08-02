@@ -83,6 +83,11 @@ div {
   width: 50%;
 }
 
+#prestigediv{
+  margin: auto;
+  text-align: center;
+}
+
 #money{
   color:rgb(216, 191, 48);
 }

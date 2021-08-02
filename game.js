@@ -21,6 +21,12 @@ const resetbutton = document.querySelector("#resetbutton");
 const savegameint = document.querySelector("#savegameint");
 const upclickpowermultiplier1 = document.querySelector("#upclickpowermultiplier1");
 const uppickaxepowermultiplier = document.querySelector("#uppickaxepowermultiplier");
+const prestigebutton = document.querySelector("#prestigebutton");
+const moneyifprestigetext = document.querySelector("#moneyifprestigetext");
+const moneytext = document.querySelector("#moneytext");
+const prestigeup1 = document.querySelector("#prestigeup1");
+const prestigeup2 = document.querySelector("#prestigeup2");
+
 
 //Game Variables
 var wood = 0;
@@ -43,14 +49,19 @@ var automultiplier = 1;
 var progressbardivide = 1;
 var progressbarvalue = ((totalresources/1000)/progressbardivide);
 var resourcepopupvalue = 100000;
+var money = 0;
+var moneyifprestige = totalresources/10000;
 var isthegamesaved = 0;
 var uppickaxebought = 0;
 var upclickpowermultiplierbought = 0;
 var upautochoppermultiplierbought = 0;
 var upclickpowermultiplierbought1 = 0;
 var uppickaxepowermultiplierbought = 0;
+var prestigeup1bought = 0;
+var prestigeup2bought = 0;
 var gamesavedago = 0;
 var autointerval;
+var autointervalvalue = 1000;
 
 var select = document.getElementById('savegameintervalsetting');//Save game interval value from html
 var value = select.options[select.selectedIndex].value;
@@ -62,6 +73,7 @@ isthegamesaved = JSON.parse(localStorage.getItem('isthegamesaved'));
 if (isthegamesaved == 1){
 wood = JSON.parse(localStorage.getItem('wood'));
 auto = JSON.parse(localStorage.getItem('auto'));
+autointervalvalue = JSON.parse(localStorage.getItem('autointervalvalue'));
 autopower = JSON.parse(localStorage.getItem('autopower'));
 autocost = JSON.parse(localStorage.getItem('autocost'));
 additionalclickpower = JSON.parse(localStorage.getItem('additionalclickpower'));
@@ -86,6 +98,9 @@ upautochoppermultiplierbought = JSON.parse(localStorage.getItem('upautochoppermu
 upclickpowermultiplierbought1 = JSON.parse(localStorage.getItem('upclickpowermultiplierbought1'));
 value = JSON.parse(localStorage.getItem('value'));
 uppickaxepowermultiplierbought = JSON.parse(localStorage.getItem('uppickaxepowermultiplierbought'));
+money = JSON.parse(localStorage.getItem('money'));
+prestigeup1bought = JSON.parse(localStorage.getItem('prestigeup1bought'));
+prestigeup2bought = JSON.parse(localStorage.getItem('prestigeup2bought'));
 };
 
 //Loading upgrades state . bought or not
@@ -94,6 +109,8 @@ if (upclickpowermultiplierbought == 1){upclickpowermultiplier.style.display = 'n
 if (upautochoppermultiplierbought == 1){upautochoppermultiplier.style.display = 'none';};
 if (upclickpowermultiplierbought1 == 1){upclickpowermultiplier1.style.display = 'none';};
 if (uppickaxepowermultiplierbought == 1){uppickaxepowermultiplier.style.display = 'none';};
+if (prestigeup1bought == 1){prestigeup1.style.display = 'none';};
+if (prestigeup2bought == 1){prestigeup2.style.display = 'none';};
 
 //Functions
 const updateUI = () => {
@@ -111,6 +128,9 @@ const updateUI = () => {
     pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
     pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
     autopower = (auto*automultiplier);
+    moneyifprestige = totalresources/10000;
+    moneyifprestigetext.innerHTML = `You will get ${moneyifprestige} Money if you prestige now`;
+    moneytext.innerHTML = `You have ${money} Money`
 };
 const mouseout = () => {
     infoText.innerHTML = `Hover over something for more info`;
@@ -120,6 +140,7 @@ const savegame = () => {
     if(value>0){
     localStorage.setItem('wood', JSON.stringify(wood));
     localStorage.setItem('auto', JSON.stringify(auto));
+    localStorage.setItem('autointervalvalue', JSON.stringify(autointervalvalue));
     localStorage.setItem('autopower', JSON.stringify(autopower));
     localStorage.setItem('autocost', JSON.stringify(autocost));
     localStorage.setItem('additionalclickpower', JSON.stringify(additionalclickpower));
@@ -143,7 +164,10 @@ const savegame = () => {
     localStorage.setItem('upautochoppermultiplierbought', JSON.stringify(upautochoppermultiplierbought));
     localStorage.setItem('upclickpowermultiplierbought1', JSON.stringify(upclickpowermultiplierbought1));
     localStorage.setItem('uppickaxepowermultiplierbought', JSON.stringify(uppickaxepowermultiplierbought));
+    localStorage.setItem('prestigeup1bought', JSON.stringify(prestigeup1bought));
+    localStorage.setItem('prestigeup2bought', JSON.stringify(prestigeup2bought));
     localStorage.setItem('value', JSON.stringify(value));
+    localStorage.setItem('money', JSON.stringify(money));
         isthegamesaved = 1;
     localStorage.setItem('isthegamesaved', JSON.stringify(isthegamesaved));
     gamesavedago = 0;
@@ -156,12 +180,14 @@ const savegame = () => {
 
  savegame();
 
+
+function restartautoloop() {
+    clearInterval(autointerval);
+    autointerval = setInterval(autoloop, autointervalvalue);
+};
+
 //Game Loops
 window.setInterval(() => {
-    wood += autopower;
-    stone += autostone;
-    totalresources += autopower;
-    totalresources += autostone;
     if (totalresources >= resourcepopupvalue){
     window.alert("You gathered " + resourcepopupvalue + " total resources! Congratulations! Your click power multipliers are now increased by 5!");
     resourcepopupvalue = resourcepopupvalue*2;
@@ -172,6 +198,16 @@ window.setInterval(() => {
     gamesavedago += 1;
     savegameint.innerHTML = `Game saved ${gamesavedago} seconds ago`
 }, 1000);
+
+
+const autoloop = () => {
+    wood += autopower;
+    stone += autostone;
+    totalresources += autopower;
+    totalresources += autostone;
+};
+
+autointerval = setInterval(autoloop, autointervalvalue);
 
 //Save game
 
@@ -368,6 +404,69 @@ uppickaxepowermultiplier.addEventListener("click", () => {
     }
     else{window.alert("You don't have enough resources!");}
 });
+
+//Prestige Upgrades
+//1
+prestigeup1.addEventListener("click", () => {
+    if(money>=1){
+        money-=1;
+        clickpowermultiplier+=3;
+        pickaxepowermultiplier+=3;
+        prestigeup1bought=1;
+        prestigeup1.style.display = 'none';
+    }
+    else{window.alert("You don't have enough resources!");}
+});
+
+//2
+prestigeup2.addEventListener("click", () => {
+    if(money>=10){
+        money-=10;
+        autointervalvalue = autointervalvalue/2;
+        prestigeup2bought=1;
+        restartautoloop();
+        prestigeup2.style.display = 'none';
+    }
+    else{window.alert("You don't have enough resources!");}
+});
+
+//Prestige
+prestigebutton.addEventListener("click", () => {
+    if (confirm("This will reset your progress. Are you sure?")){
+    money += moneyifprestige;
+    wood = 0;
+    auto = 0;
+    autopower = 0;
+    autocost = 10;
+    additionalclickpower = 0;
+    clickpowermultiplier = 1;
+    clickpower = ((1+additionalclickpower)*clickpowermultiplier);
+    clickpowercost = 30;
+    stone = 0;
+    autostone = 0;
+    autostonecost = 45;
+    pickaxepowercost = 100;
+    additionalpickaxepower = 0;
+    pickaxepowermultiplier = 1;
+    pickaxepower = ((1+additionalpickaxepower)*pickaxepowermultiplier);
+    totalresources = 0;
+    automultiplier = 1;
+    progressbardivide = 1;
+    progressbarvalue = ((totalresources/1000)/progressbardivide);
+    resourcepopupvalue = 100000;
+    moneyifprestige = totalresources/10000;
+    isthegamesaved = 0;
+    uppickaxebought = 0;
+    upclickpowermultiplierbought = 0;
+    upautochoppermultiplierbought = 0;
+    upclickpowermultiplierbought1 = 0;
+    uppickaxepowermultiplierbought = 0;
+    gamesavedago = 0;
+    autointerval;
+    savegame();
+    window.location.reload(true);
+    }
+})
 
 //Settings
 //Save button

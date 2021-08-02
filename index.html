@@ -17,8 +17,8 @@
     <!-- Tab -->
     <div class="navbar">
         <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen">Home</button>
-        <button class="tablink" onclick="openPage('Inventory', this, 'gray')">Inventory</button>
         <button class="tablink" onclick="openPage('Shop', this, 'gray')">Shop</button>
+        <button class="tablink" onclick="openPage('Inventory', this, 'gray')">Prestige</button>
         <button class="tablink" onclick="openPage('Settings', this, 'gray')">Settings</button>
       </div>
       <!-- Tab content -->
@@ -56,18 +56,29 @@
 </div>
     <!-- Tab content-->
 <div id="Inventory" class="tabcontent">
-    <h3>Inventory</h3>
-    <p>Nothing to see here...</p>
+    <h2>Prestige</h2>
+    <div id="prestigediv">
+    <p>Here you can reset your progress for Money which can be used to buy Prestige Upgrades</p>
+    <p>You will lose all resources and regular upgrades but Prestige Upgrades will remain</p>
+    <p></p>
+    <h2 id="moneyifprestigetext">You will get 0 Money if you prestige now</h2>
+    <button id="prestigebutton">Prestige</button>
+    </div>
 </div>
   
 <div id="Shop" class="tabcontent">
-    <h3>Shop</h3>
+    <h2>Upgrades</h2>
     <button id="uppickaxe">Pickaxe || 1000 Wood</button>
-    <button id="upclickpowermultiplier">Multiply axe power by 2 || 666 Wood</button>
-    <button id="upautochoppermultiplier">Multiply autochopper production by 2 || 1234 Wood & 321 Stone</button>
-    <button id="uppickaxepowermultiplier">Multiply pickaxe power by 2 || 1000 Stone</button>
-    <button id="upclickpowermultiplier1">Multiply axe power by 2 || 5000 Wood & 2000 Stone</button>
-    
+    <button id="upclickpowermultiplier">Increase axe power multiplier by 1 || 666 Wood</button>
+    <button id="upautochoppermultiplier">Increase autochopper production multiplier by 1 || 1234 Wood & 321 Stone</button>
+    <button id="uppickaxepowermultiplier">Increase pickaxe power multiplier by 1 || 1000 Stone</button>
+    <button id="upclickpowermultiplier1">Increase axe power multiplier by 1 || 5000 Wood & 2000 Stone</button>
+
+    <p></p>
+    <h2>Prestige Upgrades</h2>
+    <h3 id="moneytext">You have 0 money</h3>
+    <button id="prestigeup1">Increase axe and pickaxe power multiplier by 3 || 1 Money</button>
+    <button id="prestigeup2">Increase Autochoppers and ASC collecting speed by 100% || 10 Money</button>
 </div>
 
 <div id="Settings" class="tabcontent">
