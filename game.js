@@ -50,6 +50,7 @@ var upautochoppermultiplierbought = 0;
 var upclickpowermultiplierbought1 = 0;
 var uppickaxepowermultiplierbought = 0;
 var gamesavedago = 0;
+var autointerval;
 
 var select = document.getElementById('savegameintervalsetting');//Save game interval value from html
 var value = select.options[select.selectedIndex].value;
@@ -72,6 +73,7 @@ autostone = JSON.parse(localStorage.getItem('autostone'));
 autostonecost = JSON.parse(localStorage.getItem('autostonecost'));
 pickaxepowercost = JSON.parse(localStorage.getItem('pickaxepowercost'));
 additionalpickaxepower = JSON.parse(localStorage.getItem('additionalpickaxepower'));
+pickaxepowermultiplier = JSON.parse(localStorage.getItem('pickaxepowermultiplier'));
 pickaxepower = JSON.parse(localStorage.getItem('pickaxepower'));
 totalresources = JSON.parse(localStorage.getItem('totalresources'));
 automultiplier = JSON.parse(localStorage.getItem('automultiplier'));
@@ -129,6 +131,7 @@ const savegame = () => {
     localStorage.setItem('autostonecost', JSON.stringify(autostonecost));
     localStorage.setItem('pickaxepowercost', JSON.stringify(pickaxepowercost));
     localStorage.setItem('additionalpickaxepower', JSON.stringify(additionalpickaxepower));
+    localStorage.setItem('pickaxepowermultiplier', JSON.stringify(pickaxepowermultiplier));
     localStorage.setItem('pickaxepower', JSON.stringify(pickaxepower));
     localStorage.setItem('totalresources', JSON.stringify(totalresources));
     localStorage.setItem('automultiplier', JSON.stringify(automultiplier));
