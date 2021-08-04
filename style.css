@@ -41,7 +41,7 @@ button:hover {
 }
 
 div {
-    margin: 10px;
+  margin: 10px;
 }
 
 #stonethingsdiv button:hover{
@@ -118,8 +118,7 @@ div {
 
 #divseparator{
   width: auto;
-  height: 10px;
-  padding: 15px 15px;
+  padding:1px 1px;
 }
 
 .wood {
@@ -130,7 +129,24 @@ div {
     color: rgb(59, 124, 245);
 }
 
-/* Style tab links */
+#moneyifprestigetext{
+  margin: auto;
+  text-align: center;
+  display:inline;
+}
+
+#moneyicon{
+  margin: auto;
+  text-align: center;
+  display:inline;
+}
+
+#moneyifprestigetext2{
+  margin: auto;
+  text-align: center;
+  display:inline;
+}
+
 .tablink {
   color: white;
   float: left;
@@ -142,7 +158,6 @@ div {
   width: auto;
 }
 
-/* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
   color: white;
   display: none;
@@ -206,4 +221,13 @@ div {
 
 #autostonecollectorstat{
   color:coral;
+}
+
+#upautostonemultiplier{
+  color:coral;
+}
+
+#moneytext{
+  float:left;
+  margin-right: 5px;
 }

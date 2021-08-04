@@ -26,6 +26,7 @@ const moneyifprestigetext = document.querySelector("#moneyifprestigetext");
 const moneytext = document.querySelector("#moneytext");
 const prestigeup1 = document.querySelector("#prestigeup1");
 const prestigeup2 = document.querySelector("#prestigeup2");
+const upautostonemultiplier = document.querySelector("#upautostonemultiplier");
 
 
 //Game Variables
@@ -39,6 +40,8 @@ var clickpower = ((1+additionalclickpower)*clickpowermultiplier);
 var clickpowercost = 30;
 var stone = 0;
 var autostone = 0;
+var autostonemultiplier = 1;
+var autostonepower = (autostone*autostonemultiplier)
 var autostonecost = 45;
 var pickaxepowercost = 100;
 var additionalpickaxepower = 0;
@@ -57,6 +60,7 @@ var upclickpowermultiplierbought = 0;
 var upautochoppermultiplierbought = 0;
 var upclickpowermultiplierbought1 = 0;
 var uppickaxepowermultiplierbought = 0;
+var upautostonemultiplierbought = 0;
 var prestigeup1bought = 0;
 var prestigeup2bought = 0;
 var gamesavedago = 0;
@@ -82,6 +86,7 @@ clickpower = JSON.parse(localStorage.getItem('clickpower'));
 clickpowercost = JSON.parse(localStorage.getItem('clickpowercost'));
 stone = JSON.parse(localStorage.getItem('stone'));
 autostone = JSON.parse(localStorage.getItem('autostone'));
+autostonemultiplier = JSON.parse(localStorage.getItem('autostonemultiplier'));
 autostonecost = JSON.parse(localStorage.getItem('autostonecost'));
 pickaxepowercost = JSON.parse(localStorage.getItem('pickaxepowercost'));
 additionalpickaxepower = JSON.parse(localStorage.getItem('additionalpickaxepower'));
@@ -101,6 +106,7 @@ uppickaxepowermultiplierbought = JSON.parse(localStorage.getItem('uppickaxepower
 money = JSON.parse(localStorage.getItem('money'));
 prestigeup1bought = JSON.parse(localStorage.getItem('prestigeup1bought'));
 prestigeup2bought = JSON.parse(localStorage.getItem('prestigeup2bought'));
+upautostonemultiplierbought = JSON.parse(localStorage.getItem('upautostonemultiplierbought'));
 };
 
 //Loading upgrades state . bought or not
@@ -111,6 +117,7 @@ if (upclickpowermultiplierbought1 == 1){upclickpowermultiplier1.style.display = 
 if (uppickaxepowermultiplierbought == 1){uppickaxepowermultiplier.style.display = 'none';};
 if (prestigeup1bought == 1){prestigeup1.style.display = 'none';};
 if (prestigeup2bought == 1){prestigeup2.style.display = 'none';};
+if (upautostonemultiplierbought == 1){upautostonemultiplier.style.display = 'none';};
 
 //Functions
 const updateUI = () => {
@@ -128,8 +135,9 @@ const updateUI = () => {
     pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
     pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
     autopower = (auto*automultiplier);
+    autostonepower = (autostone*autostonemultiplier)
     moneyifprestige = totalresources/10000;
-    moneyifprestigetext.innerHTML = `You will get ${moneyifprestige} Money if you prestige now`;
+    moneyifprestigetext.innerHTML = `You will get ${moneyifprestige} Money `;
     moneytext.innerHTML = `You have ${money} Money`
 };
 const mouseout = () => {
@@ -149,6 +157,7 @@ const savegame = () => {
     localStorage.setItem('clickpowercost', JSON.stringify(clickpowercost));
     localStorage.setItem('stone', JSON.stringify(stone));
     localStorage.setItem('autostone', JSON.stringify(autostone));
+    localStorage.setItem('autostonemultiplier', JSON.stringify(autostonemultiplier));
     localStorage.setItem('autostonecost', JSON.stringify(autostonecost));
     localStorage.setItem('pickaxepowercost', JSON.stringify(pickaxepowercost));
     localStorage.setItem('additionalpickaxepower', JSON.stringify(additionalpickaxepower));
@@ -166,6 +175,7 @@ const savegame = () => {
     localStorage.setItem('uppickaxepowermultiplierbought', JSON.stringify(uppickaxepowermultiplierbought));
     localStorage.setItem('prestigeup1bought', JSON.stringify(prestigeup1bought));
     localStorage.setItem('prestigeup2bought', JSON.stringify(prestigeup2bought));
+    localStorage.setItem('upautostonemultiplierbought', JSON.stringify(upautostonemultiplierbought));
     localStorage.setItem('value', JSON.stringify(value));
     localStorage.setItem('money', JSON.stringify(money));
         isthegamesaved = 1;
@@ -401,6 +411,18 @@ uppickaxepowermultiplier.addEventListener("click", () => {
         uppickaxepowermultiplierbought = 1;
         pickaxepowermultiplier += 1;
         uppickaxepowermultiplier.style.display = 'none';
+    }
+    else{window.alert("You don't have enough resources!");}
+});
+
+//Autostone production multiplier
+upautostonemultiplier.addEventListener("click", () => {
+    if(wood>=15000 && stone>=8000) {
+        wood -= 15000;
+        stone -= 8000;
+        upautostonemultiplierbought = 1;
+        autostonemultiplier += 1;
+        upautostonemultiplier.style.display = 'none';
     }
     else{window.alert("You don't have enough resources!");}
 });
