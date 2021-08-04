@@ -16,23 +16,23 @@
 
     <!-- Tab -->
     <div class="navbar">
-        <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen"><img id="homeicon" src="home64.png"></button>
-        <button class="tablink" onclick="openPage('Shop', this, 'gray')"><img id="shopicon" src="shop64.png"></button>
-        <button class="tablink" onclick="openPage('Inventory', this, 'gray')"><img id="prestigeicon" src="prestige64.png"></button>
-        <button class="tablink" onclick="openPage('Settings', this, 'gray')"><img id="settingsicon" src="settings64.png"></button>
+        <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen"></button>
+        <button class="tablink" onclick="openPage('Shop', this, 'gray')" id="shoptab"></button>
+        <button class="tablink" onclick="openPage('Inventory', this, 'gray')" id="prestigetab"></button>
+        <button class="tablink" onclick="openPage('Settings', this, 'gray')" id="settingstab"></button>
       </div>
     <div id="divseparator"></div>
       <!-- Tab content -->
 <div id="Home" class="tabcontent">  <!-- Make sure content is BELOW navbar-->
     <div id="woodicondiv"><img id="woodicon" src="wood64.png"></div> <h1 id="money">Wood: 0</h1>
-    <div id="stoneicondiv"><img id="stoneicon" src="stone64.png"></div> <h1 class="stoneclass" id="stone">Stone: 0</h1>
+    <div id="stoneicondiv"><img class="stoneclass" id="stoneicon" src="stone64.png"></div> <h1 class="stoneclass" id="stone">Stone: 0</h1>
 <div id="woodbuttons">
     <button class="wood" id="moneybutton">Chop wood</button>
     <button class="blue" id="autobutton">Autochopper || 10 wood</button>
     <button class="wood" id="clickpowerbutton">Increase axe power by 1 || 30 wood</button>
 </div>
 
-<div class="stoneclass">
+<div class="stoneclass" id="stonethingsdiv">
     <button id="pickaxebutton">Get stone</button>
     <button id="autostone">Automatic Stone Collector || 45 stone</button>
     <button id="pickaxepowerbutton">Increase pickaxe power by 1 || 100 stone</button>
