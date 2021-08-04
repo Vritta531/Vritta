@@ -16,16 +16,17 @@
 
     <!-- Tab -->
     <div class="navbar">
-        <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen">Home</button>
-        <button class="tablink" onclick="openPage('Shop', this, 'gray')">Shop</button>
-        <button class="tablink" onclick="openPage('Inventory', this, 'gray')">Prestige</button>
-        <button class="tablink" onclick="openPage('Settings', this, 'gray')">Settings</button>
+        <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen"><img id="homeicon" src="home64.png"></button>
+        <button class="tablink" onclick="openPage('Shop', this, 'gray')"><img id="shopicon" src="shop64.png"></button>
+        <button class="tablink" onclick="openPage('Inventory', this, 'gray')"><img id="prestigeicon" src="prestige64.png"></button>
+        <button class="tablink" onclick="openPage('Settings', this, 'gray')"><img id="settingsicon" src="settings64.png"></button>
       </div>
+    <div id="divseparator"></div>
       <!-- Tab content -->
 <div id="Home" class="tabcontent">  <!-- Make sure content is BELOW navbar-->
-    <h1 id="money">Wood: 0</h1>
-    <h1 class="stoneclass" id="stone">Stone: 0</h1>
-<div>
+    <div id="woodicondiv"><img id="woodicon" src="wood64.png"></div> <h1 id="money">Wood: 0</h1>
+    <div id="stoneicondiv"><img id="stoneicon" src="stone64.png"></div> <h1 class="stoneclass" id="stone">Stone: 0</h1>
+<div id="woodbuttons">
     <button class="wood" id="moneybutton">Chop wood</button>
     <button class="blue" id="autobutton">Autochopper || 10 wood</button>
     <button class="wood" id="clickpowerbutton">Increase axe power by 1 || 30 wood</button>
@@ -94,6 +95,7 @@
   <option value="10000">10 seconds</option>
   <option value="null">Turn off</option>
 </select>
+<div id="iconcredit">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </div>
 
 <!-- js file link -->
