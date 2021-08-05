@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Vritta | Incremental Game</title>
+</head>
+<body>
+
+    <div class="progress-container">
+        <div class="progress"></div>
+      </div>
+
+    <!-- Tab -->
+    <div class="navbar">
+        <button class="tablink" onclick="openPage('Home', this, 'gray')" id="defaultOpen"></button>
+        <button class="tablink" onclick="openPage('Shop', this, 'gray')" id="shoptab"></button>
+        <button class="tablink" onclick="openPage('Inventory', this, 'gray')" id="prestigetab"></button>
+        <button class="tablink" onclick="openPage('Settings', this, 'gray')" id="settingstab"></button>
+      </div>
+    <div id="divseparator"></div>
+      <!-- Tab content -->
+<div id="Home" class="tabcontent">  <!-- Make sure content is BELOW navbar-->
+    <div id="woodicondiv"><img id="woodicon" src="wood64.png"></div> <h1 id="money">Drewno: 0</h1>
+    <div id="stoneicondiv" class="stoneclass"><img class="stoneclass" id="stoneicon" src="stone64.png"></div> <h1 class="stoneclass" id="stone">Kamień: 0</h1>
+<div id="woodbuttons">
+    <button class="wood" id="moneybutton">Rąb drewno</button>
+    <button class="blue" id="autobutton">Autorębacz || 10 Drewna</button>
+    <button class="wood" id="clickpowerbutton">Zwiększ moc siekiery o 1 || 30 Drewna</button>
+</div>
+
+<div class="stoneclass" id="stonethingsdiv">
+    <button id="pickaxebutton">Zbieraj kamień</button>
+    <button id="autostone">Automatyczny zbieracz kamienia || 45 Kamienia</button>
+    <button id="pickaxepowerbutton">Zwiększ moc kilofa 1 || 100 Kamienia</button>
+</div>
+
+
+
+<!-- info div -->
+<div>
+    <h3 id="info">Najedź na coś aby uzyskać więcej informacji</h2>
+</div>
+    <!-- stats div -->
+<div>
+    <h4 class="wood" id="clickpower">Moc siekiery: 1</h4>
+    <h4 class="blue" id="autoclicker">Autorębacze: 0</h4>
+    <h4 class="stoneclass" id="pickaxepowerstat">Moc kilofa: 0</h4>
+    <h4 class="stoneclass" id="autostonecollectorstat">Automatyczne zbieracze kamienia: 0</h4>
+</div>
+
+<h5 id="savegameint" class="savegameint">Stan gry nie jest zapisany</h5>
+
+</div>
+    <!-- Tab content-->
+<div id="Inventory" class="tabcontent">
+    <h2>Prestiż</h2>
+    <div id="prestigediv">
+    <p>Tutaj możesz zresetować cały postęp za Pieniądze, które możesz wykorzystać do kupienia Prestiżowych Ulepszeń</p>
+    <p>Stracisz wszystkie zasoby i zwykłe Ulepszenia. Jedynie Prestiżowe Ulepszenia pozostaną</p>
+    <p></p>
+    <h1 id="moneyifprestigetext">Zdobędziesz 0 Pieniędzy </h1><img id="moneyicon" src="money64.png"><h1 id="moneyifprestigetext2"> jeśli teraz wykonasz Prestiż</h1>
+    <button id="prestigebutton">Prestiż</button>
+    </div>
+</div>
+  
+<div id="Shop" class="tabcontent">
+    <h2>Ulepszenia</h2>
+    <div>
+    <button id="uppickaxe">Kilof || 1000 Drewna</button>
+    <button id="upclickpowermultiplier">Zwiększ mnożnik mocy siekiery o 1 || 666 Drewna</button>
+    <button id="upautochoppermultiplier">Zwiększ mnożnik produkcji Autorębaczy o 1 || 1234 Drewna & 321 Kamienia</button>
+    <button id="uppickaxepowermultiplier">Zwiększ mnożnik mocy kilofa o 1 || 1000 Kamień</button>
+    <button id="upclickpowermultiplier1">Zwiększ mnożnik mocy siekiery o 1 || 5000 Drewna & 2000 Kamienia</button>
+    <button id="upautostonemultiplier">Zwiększ mnożnik produkcji AZK o 1 || 15000 Drewna & 8000 Kamienia</button>
+    </div>
+
+    <p></p>
+    <h2>Prestiżowe Ulepszenia</h2>
+    <h3 id="moneytext">Posiadasz 0 pieniędzy </h3><img id="moneyicon" src="money64.png">
+    <div>
+    <button id="prestigeup1">Zwiększ mnożniki mocy siekiery i kilofa o 3 || 1 Pieniądz</button>
+    <button id="prestigeup2">Zwiększ prędkość działania Autorębaczy i AZK dwukrotnie || 10 Pieniędzy</button>
+    </div>
+</div>
+
+<div id="Settings" class="tabcontent">
+    <h2>Ustawienia</h2>
+    <button id="savebutton">Zapisz stan gry</button>
+    <button id="resetbutton">Zresetuj postęp</button>
+
+    <!-- Save game interval setting-->
+    <label for="savegameintervalsetting">Automatyczny zapis stanu gry:</label>
+<select name="savegameintervalsetting" id="savegameintervalsetting">
+  <option value="30000">30 sekund</option>
+  <option value="20000">20 sekund</option>
+  <option value="10000">10 sekund</option>
+  <option value="null">Wyłączony</option>
+</select>
+
+<button id="languagechange">Zmień język</button>
+
+<div id="iconcredit">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</div>
+
+<!-- js file link -->
+<script src="polgame.js"></script>
+
+</body>
+</html>

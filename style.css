@@ -44,6 +44,18 @@ div {
   margin: 10px;
 }
 
+#languagediv{
+  margin: auto;
+  text-align: center;
+  padding-top: 30px;
+}
+
+#languagediv button:hover{
+  background: gray;
+  color: black;
+  transition: all 0.2s ease-in-out;
+}
+
 #stonethingsdiv button:hover{
   background: gray;
   color: black;

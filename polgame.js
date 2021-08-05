@@ -122,27 +122,27 @@ if (upautostonemultiplierbought == 1){upautostonemultiplier.style.display = 'non
 
 //Functions
 const updateUI = () => {
-    moneyHeading.innerHTML = `Wood: ${wood}`;
-    autoHeading.innerHTML = `Autochoppers: ${auto}`;
-    stoneHeading.innerHTML = `Stone: ${stone}`;
+    moneyHeading.innerHTML = `Drewno: ${wood}`;
+    autoHeading.innerHTML = `Autorębacze: ${auto}`;
+    stoneHeading.innerHTML = `Kamień: ${stone}`;
     clickpower = ((1+additionalclickpower)*clickpowermultiplier);
     pickaxepower = ((1+additionalpickaxepower)*pickaxepowermultiplier);
     progressbarvalue = ((totalresources/1000)/progressbardivide);
-    clickpowervalue.innerHTML = `Axe power: ${clickpower}`;
-    autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
-    clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
-    autostonecollector.innerHTML = `Automatic stone collector || ${autostonecost} stone`;
-    autostonecollectorstat.innerHTML = `Automatic stone collectors: ${autostone}`;
-    pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
-    pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
+    clickpowervalue.innerHTML = `Moc siekiery: ${clickpower}`;
+    autoclickerbutton.innerHTML = `Autorębacz || ${autocost} Drewna`;
+    clickpowerbutton.innerHTML = `Zwiększ moc siekiery o 1 || ${clickpowercost} Drewna`;
+    autostonecollector.innerHTML = `Automatyczny zbieracz kamienia || ${autostonecost} Kamienia`;
+    autostonecollectorstat.innerHTML = `Automatyczne zbieracze kamienia: ${autostone}`;
+    pickaxepowerbutton.innerHTML = `Zwiększ moc kilofa o 1 || ${pickaxepowercost} Kamienia`;
+    pickaxepowerstat.innerHTML = `Moc kilofa: ${pickaxepower}`;
     autopower = (auto*automultiplier);
     autostonepower = (autostone*autostonemultiplier)
     moneyifprestige = totalresources/10000;
-    moneyifprestigetext.innerHTML = `You will get ${moneyifprestige} Money `;
-    moneytext.innerHTML = `You have ${money} Money`
+    moneyifprestigetext.innerHTML = `Zdobędziesz ${moneyifprestige} Pieniędzy `;
+    moneytext.innerHTML = `Posiadasz ${money} Pieniędzy`
 };
 const mouseout = () => {
-    infoText.innerHTML = `Hover over something for more info`;
+    infoText.innerHTML = `Najedź na coś aby uzyskać więcej informacji`;
 };
 
 const savegame = () => {
@@ -200,14 +200,14 @@ function restartautoloop() {
 //Game Loops
 window.setInterval(() => {
     if (totalresources >= resourcepopupvalue){
-    window.alert("You gathered " + resourcepopupvalue + " total resources! Congratulations! Your click power multipliers are now increased by 5!");
+    window.alert("Zebrałeś całkowicie " + resourcepopupvalue + " zasobów! Gratulacje! Mnożniki mocy siekiery i kilofa zostały zwiększone o 5!");
     resourcepopupvalue = resourcepopupvalue*2;
     progressbardivide = progressbardivide*2;
     clickpowermultiplier += 5;
     pickaxepowermultiplier += 5;
     }
     gamesavedago += 1;
-    savegameint.innerHTML = `Game saved ${gamesavedago} seconds ago`
+    savegameint.innerHTML = `Stan gry zapisany ${gamesavedago} sekund temu`
 }, 1000);
 
 
@@ -260,7 +260,7 @@ moneybutton.addEventListener("click", () => {
     updateUI();
 });
 moneybutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Click this button to chop wood`;
+    infoText.innerHTML = `Kliknij ten przycisk aby rąbać drewno`;
 });
 moneybutton.addEventListener("mouseout", () => {
     mouseout();
@@ -272,12 +272,12 @@ autoclickerbutton.addEventListener("click", () => {
         wood -= autocost;
         auto += 1;
         autocost = autocost*2;
-        autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
+        autoclickerbutton.innerHTML = `Autorębacz || ${autocost} Drewna`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 autoclickerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Autochopper chops wood for you | 1 autochopper chops 1 wood every 1000ms`;
+    infoText.innerHTML = `Autorębacz rąbie drewno za ciebine | 1 autorębacz rąbie 1 drewno co sekundę`;
 });
 autoclickerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -289,12 +289,12 @@ clickpowerbutton.addEventListener("click", () => {
         wood -= clickpowercost;
         additionalclickpower += 1;
         clickpowercost = clickpowercost*2;
-        clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
+        clickpowerbutton.innerHTML = `Zwiększ moc siekiery o 1 || ${clickpowercost} Drewno`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 clickpowerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Increases axe power by 1`;
+    infoText.innerHTML = `Zwiększa moc siekiery o 1`;
 });
 clickpowerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -313,7 +313,7 @@ pickaxebutton.addEventListener("click", () => {
     updateUI();
 });
 pickaxebutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Click this button to gather stone`;
+    infoText.innerHTML = `Kliknij ten przycisk aby zbierać kamień`;
 });
 pickaxebutton.addEventListener("mouseout", () => {
     mouseout();
@@ -325,13 +325,13 @@ autostonecollector.addEventListener("click", () => {
         stone -= autostonecost;
         autostone += 1;
         autostonecost = autostonecost*2;
-        autostonecollector.innerHTML = `Automatic stone collector || ${autostonecost} stone`;
-        autostonecollectorstat.innerHTML = `Automatic stone collectors: ${autostone}`;
+        autostonecollector.innerHTML = `Automatyczny zbieracz kamienia || ${autostonecost} Kamienia`;
+        autostonecollectorstat.innerHTML = `Automatyczne zbieracze kamienia: ${autostone}`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 autostonecollector.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Automatic stone collector | 1 ASC gathers 1 stone every 1000ms`;
+    infoText.innerHTML = `Automatyczny zbieracz kamienia | 1 AZK zbiera 1 kamień co sekundę`;
 });
 autostonecollector.addEventListener("mouseout", () => {
     mouseout();
@@ -343,13 +343,13 @@ pickaxepowerbutton.addEventListener("click", () => {
         stone -= pickaxepowercost;
         additionalpickaxepower += 1;
         pickaxepowercost = pickaxepowercost*2;
-        pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
-        pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
+        pickaxepowerbutton.innerHTML = `Zwiększ moc kilofa o 1 || ${pickaxepowercost} Kamienia`;
+        pickaxepowerstat.innerHTML = `Moc kilofa: ${pickaxepower}`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 pickaxepowerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Increases pickaxe power by 1`;
+    infoText.innerHTML = `Zwiększa moc kilofa o 1`;
 });
 pickaxepowerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -367,7 +367,7 @@ for (var i = 0; i < appBanners.length; i ++) {
     appBanners[i].style.display = 'block';
 }
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 
 //Click power multiplier
@@ -378,7 +378,7 @@ upclickpowermultiplier.addEventListener("click", () => {
         clickpowermultiplier += 1;
         upclickpowermultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 
 //Autochopper multiplier
@@ -390,7 +390,7 @@ upautochoppermultiplier.addEventListener("click", () => {
         upautochoppermultiplierbought = 1;
         upautochoppermultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 })
 
 //Axe power multiplier 1
@@ -402,7 +402,7 @@ upclickpowermultiplier1.addEventListener("click", () => {
         clickpowermultiplier += 1;
         upclickpowermultiplier1.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 
 //Pickaxe power multiplier
@@ -413,7 +413,7 @@ uppickaxepowermultiplier.addEventListener("click", () => {
         pickaxepowermultiplier += 1;
         uppickaxepowermultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 
 //Autostone production multiplier
@@ -425,7 +425,7 @@ upautostonemultiplier.addEventListener("click", () => {
         autostonemultiplier += 1;
         upautostonemultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 
 //Prestige Upgrades
@@ -438,7 +438,7 @@ prestigeup1.addEventListener("click", () => {
         prestigeup1bought=1;
         prestigeup1.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 
 //2
@@ -450,12 +450,12 @@ prestigeup2.addEventListener("click", () => {
         restartautoloop();
         prestigeup2.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{window.alert("Nie masz wystarczająco zasobów!");}
 });
 
 //Prestige
 prestigebutton.addEventListener("click", () => {
-    if (confirm("This will reset your progress. Are you sure?")){
+    if (confirm("Cały postęp oprócz Prestiżowych Ulepszeń zostanie zresetowany. Jesteś pewien?")){
     money += moneyifprestige;
     wood = 0;
     auto = 0;
@@ -498,7 +498,7 @@ savebutton.addEventListener("click", () => {
 })
 //Reset button
 resetbutton.addEventListener("click", () => {
-    if (confirm("All progress will be erased. Are you sure?"))
+    if (confirm("Cały postęp zostanie zresetowany. Jesteś pewien?"))
     {localStorage.clear();
     window.location.reload(true);}
 })
@@ -519,7 +519,7 @@ select.addEventListener('change', () => {
 
 //Change language button
 languagechange.addEventListener("click", () => {
-    if (confirm("Are you sure you want to change the language?")){
+    if (confirm("Jesteś pewien, że chcesz zmienić język?")){
         islangsaved = 0;
         localStorage.setItem('islangsaved', JSON.stringify(islangsaved));
         window.open("index.html","_self")
