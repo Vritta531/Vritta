@@ -526,6 +526,7 @@ languagechange.addEventListener("click", () => {
     }
 })
 
+
     //Progress bar
 const progressbar = document.querySelector(".progress");
 

@@ -44,6 +44,16 @@ div {
   margin: 10px;
 }
 
+#donatetext{
+  float: left;
+  padding-right: 10px;
+  padding-top: 20px;
+}
+
+#donatebutton{
+  padding-top: 15px;
+}
+
 #languagediv{
   margin: auto;
   text-align: center;
