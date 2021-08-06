@@ -220,8 +220,6 @@ const autoloop = () => {
 
 autointerval = setInterval(autoloop, autointervalvalue);
 
-//Save game
-
 //Update UI
 window.setInterval(() => {
     updateUI();
@@ -252,7 +250,7 @@ function openPage(pageName, elmnt, color) {
   
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
-
+//_________________________________________________________________________
 //Make wood button
 moneybutton.addEventListener("click", () => {
     wood += clickpower;
@@ -355,7 +353,7 @@ pickaxepowerbutton.addEventListener("mouseout", () => {
     mouseout();
 });
 
-//Upgrades
+//Upgrades__________________________________________________
 //Pickaxe
 uppickaxe.addEventListener("click", () => {
     if(wood>=1000) {
@@ -428,7 +426,7 @@ upautostonemultiplier.addEventListener("click", () => {
     else{window.alert("You don't have enough resources!");}
 });
 
-//Prestige Upgrades
+//Prestige Upgrades____________________________________________________
 //1
 prestigeup1.addEventListener("click", () => {
     if(money>=1){
@@ -453,7 +451,7 @@ prestigeup2.addEventListener("click", () => {
     else{window.alert("You don't have enough resources!");}
 });
 
-//Prestige
+//Prestige_________________________________________________
 prestigebutton.addEventListener("click", () => {
     if (confirm("This will reset your progress. Are you sure?")){
     money += moneyifprestige;
@@ -491,7 +489,7 @@ prestigebutton.addEventListener("click", () => {
     }
 })
 
-//Settings
+//Settings___________________________
 //Save button
 savebutton.addEventListener("click", () => {
     savegame();
