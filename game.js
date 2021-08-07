@@ -29,6 +29,7 @@ const prestigeup2 = document.querySelector("#prestigeup2");
 const upautostonemultiplier = document.querySelector("#upautostonemultiplier");
 const languagechange = document.querySelector("#languagechange");
 const upautochopperdivide = document.querySelector("#upautochopperdivide");
+var popupdiv = document.getElementById("popupdiv");
 
 
 //Game Variables
@@ -209,6 +210,17 @@ function restartautoloop() {
     autointerval = setInterval(autoloop, autointervalvalue);
 };
 
+function popupdisplay() {
+    popupdiv.style.opacity = 1;
+    window.setTimeout(popuphide,3000);
+};
+
+function popuphide() {
+    popupdiv.style.opacity = 0;
+};
+
+popuphide();
+
 //Game Loops
 window.setInterval(() => {
     if (totalresources >= resourcepopupvalue){
@@ -284,7 +296,7 @@ autoclickerbutton.addEventListener("click", () => {
         autobasecost = autobasecost*2;
         autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 autoclickerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Autochopper chops wood for you | 1 autochopper chops 1 wood every 1000ms`;
@@ -301,7 +313,7 @@ clickpowerbutton.addEventListener("click", () => {
         clickpowercost = clickpowercost*2;
         clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 clickpowerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Increases axe power by 1`;
@@ -338,7 +350,7 @@ autostonecollector.addEventListener("click", () => {
         autostonecollector.innerHTML = `Automatic stone collector || ${autostonecost} stone`;
         autostonecollectorstat.innerHTML = `Automatic stone collectors: ${autostone}`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 autostonecollector.addEventListener("mouseover", () => {
     infoText.innerHTML = `Automatic stone collector | 1 ASC gathers 1 stone every 1000ms`;
@@ -356,7 +368,7 @@ pickaxepowerbutton.addEventListener("click", () => {
         pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
         pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 pickaxepowerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Increases pickaxe power by 1`;
@@ -377,7 +389,7 @@ for (var i = 0; i < appBanners.length; i ++) {
     appBanners[i].style.display = 'block';
 }
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //Click power multiplier
@@ -388,7 +400,7 @@ upclickpowermultiplier.addEventListener("click", () => {
         clickpowermultiplier += 1;
         upclickpowermultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //Autochopper multiplier
@@ -400,7 +412,7 @@ upautochoppermultiplier.addEventListener("click", () => {
         upautochoppermultiplierbought = 1;
         upautochoppermultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 })
 
 //Axe power multiplier 1
@@ -412,7 +424,7 @@ upclickpowermultiplier1.addEventListener("click", () => {
         clickpowermultiplier += 1;
         upclickpowermultiplier1.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //Pickaxe power multiplier
@@ -423,7 +435,7 @@ uppickaxepowermultiplier.addEventListener("click", () => {
         pickaxepowermultiplier += 1;
         uppickaxepowermultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //Autostone production multiplier
@@ -435,7 +447,7 @@ upautostonemultiplier.addEventListener("click", () => {
         autostonemultiplier += 1;
         upautostonemultiplier.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //Divide Autochopper Cost by 2
@@ -447,7 +459,7 @@ upautochopperdivide.addEventListener("click", () => {
         autodivide = 2;
         upautochopperdivide.style.display = 'none'
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //Prestige Upgrades____________________________________________________
@@ -460,7 +472,7 @@ prestigeup1.addEventListener("click", () => {
         prestigeup1bought=1;
         prestigeup1.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //2
@@ -472,7 +484,7 @@ prestigeup2.addEventListener("click", () => {
         restartautoloop();
         prestigeup2.style.display = 'none';
     }
-    else{window.alert("You don't have enough resources!");}
+    else{popupdisplay();}
 });
 
 //Prestige_________________________________________________

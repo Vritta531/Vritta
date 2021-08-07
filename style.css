@@ -42,8 +42,26 @@ button:active {
   transition: none;
 }
 
-div {
+div{
   margin: 10px;
+}
+
+#popupdiv{
+  margin: auto;
+  position: absolute;
+  left: 30%;
+  width: auto;
+  border: 2px solid rgb(105, 12, 16);
+  background-color: rgb(37, 37, 43);
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+}
+
+#popuptext{
+  background-color: rgb(37, 37, 43);
 }
 
 #donatetext{

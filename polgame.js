@@ -29,6 +29,7 @@ const prestigeup2 = document.querySelector("#prestigeup2");
 const upautostonemultiplier = document.querySelector("#upautostonemultiplier");
 const languagechange = document.querySelector("#languagechange");
 const upautochopperdivide = document.querySelector("#upautochopperdivide");
+var popupdiv = document.getElementById("popupdiv");
 
 
 //Game Variables
@@ -232,7 +233,18 @@ const autoloop = () => {
 
 autointerval = setInterval(autoloop, autointervalvalue);
 
-//Save game
+//Popup functions
+function popupdisplay() {
+    popupdiv.style.opacity = 1;
+    window.setTimeout(popuphide,3000);
+};
+
+function popuphide() {
+    popupdiv.style.opacity = 0;
+};
+
+popuphide();
+
 
 //Update UI
 window.setInterval(() => {
@@ -286,10 +298,10 @@ autoclickerbutton.addEventListener("click", () => {
         autobasecost = autobasecost*2;
         autoclickerbutton.innerHTML = `Autorębacz || ${autocost} Drewna`;
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 autoclickerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Autorębacz rąbie drewno za ciebine | 1 autorębacz rąbie 1 drewno co sekundę`;
+    infoText.innerHTML = `Autorębacz rąbie drewno za ciebie | 1 autorębacz rąbie 1 drewno co sekundę`;
 });
 autoclickerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -303,7 +315,7 @@ clickpowerbutton.addEventListener("click", () => {
         clickpowercost = clickpowercost*2;
         clickpowerbutton.innerHTML = `Zwiększ moc siekiery o 1 || ${clickpowercost} Drewno`;
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 clickpowerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Zwiększa moc siekiery o 1`;
@@ -340,7 +352,7 @@ autostonecollector.addEventListener("click", () => {
         autostonecollector.innerHTML = `Automatyczny zbieracz kamienia || ${autostonecost} Kamienia`;
         autostonecollectorstat.innerHTML = `Automatyczne zbieracze kamienia: ${autostone}`;
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 autostonecollector.addEventListener("mouseover", () => {
     infoText.innerHTML = `Automatyczny zbieracz kamienia | 1 AZK zbiera 1 kamień co sekundę`;
@@ -358,7 +370,7 @@ pickaxepowerbutton.addEventListener("click", () => {
         pickaxepowerbutton.innerHTML = `Zwiększ moc kilofa o 1 || ${pickaxepowercost} Kamienia`;
         pickaxepowerstat.innerHTML = `Moc kilofa: ${pickaxepower}`;
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 pickaxepowerbutton.addEventListener("mouseover", () => {
     infoText.innerHTML = `Zwiększa moc kilofa o 1`;
@@ -379,7 +391,7 @@ for (var i = 0; i < appBanners.length; i ++) {
     appBanners[i].style.display = 'block';
 }
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //Click power multiplier
@@ -390,7 +402,7 @@ upclickpowermultiplier.addEventListener("click", () => {
         clickpowermultiplier += 1;
         upclickpowermultiplier.style.display = 'none';
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //Autochopper multiplier
@@ -402,7 +414,7 @@ upautochoppermultiplier.addEventListener("click", () => {
         upautochoppermultiplierbought = 1;
         upautochoppermultiplier.style.display = 'none';
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 })
 
 //Axe power multiplier 1
@@ -414,7 +426,7 @@ upclickpowermultiplier1.addEventListener("click", () => {
         clickpowermultiplier += 1;
         upclickpowermultiplier1.style.display = 'none';
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //Pickaxe power multiplier
@@ -425,7 +437,7 @@ uppickaxepowermultiplier.addEventListener("click", () => {
         pickaxepowermultiplier += 1;
         uppickaxepowermultiplier.style.display = 'none';
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //Autostone production multiplier
@@ -437,7 +449,7 @@ upautostonemultiplier.addEventListener("click", () => {
         autostonemultiplier += 1;
         upautostonemultiplier.style.display = 'none';
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //Divide Autochopper Cost by 2
@@ -449,7 +461,7 @@ upautochopperdivide.addEventListener("click", () => {
         autodivide = 2;
         upautochopperdivide.style.display = 'none'
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //Prestige Upgrades
@@ -462,7 +474,7 @@ prestigeup1.addEventListener("click", () => {
         prestigeup1bought=1;
         prestigeup1.style.display = 'none';
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //2
@@ -474,7 +486,7 @@ prestigeup2.addEventListener("click", () => {
         restartautoloop();
         prestigeup2.style.display = 'none';
     }
-    else{window.alert("Nie masz wystarczająco zasobów!");}
+    else{popupdisplay();}
 });
 
 //Prestige
