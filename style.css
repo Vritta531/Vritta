@@ -256,6 +256,10 @@ div {
   color:coral;
 }
 
+#upautochopperdivide{
+  color:rgb(216, 191, 48);
+}
+
 #moneytext{
   float:left;
   margin-right: 5px;
