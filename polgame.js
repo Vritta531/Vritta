@@ -505,7 +505,6 @@ prestigebutton.addEventListener("click", () => {
          progressbardivide = 1;
          progressbarvalue = ((totalresources/1000)/progressbardivide);
          resourcepopupvalue = 100000;
-         money = 0;
          moneyifprestige = totalresources/10000;
          isthegamesaved = 0;
          uppickaxebought = 0;
