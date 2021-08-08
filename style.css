@@ -47,6 +47,7 @@ div{
 }
 
 #popupdiv{
+  display: "none";
   margin: auto;
   position: absolute;
   left: 30%;

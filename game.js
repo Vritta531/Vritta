@@ -211,12 +211,12 @@ function restartautoloop() {
 };
 
 function popupdisplay() {
-    popupdiv.style.opacity = 1;
+    popupdiv.style.display = "block";
     window.setTimeout(popuphide,3000);
 };
 
 function popuphide() {
-    popupdiv.style.opacity = 0;
+    popupdiv.style.display = "none";
 };
 
 popuphide();
