@@ -221,6 +221,50 @@ function popuphide() {
 
 popuphide();
 
+//CpS meter
+var started, resetTimeoutHandle, resetTimeout = 1000,
+cpscounter = document.querySelector("#cpscounter"),
+button1 = document.getElementById('moneybutton'),
+button2 = document.getElementById('pickaxebutton'),
+clicks = 0;
+
+button1.onselect = button1.onselectstart = function(){
+    return false;
+};
+
+button2.onselect = button2.onselectstart = function(){
+    return false;
+};
+
+function clicksPerSecond(started, clicks) {
+    return clicks / ((new Date()) - started) * 1000;
+}
+
+function count() {
+    clearTimeout(resetTimeoutHandle);
+    clicks++;
+    cpscounter.innerText = clicksPerSecond(started, clicks);
+    resetTimeoutHandle = setTimeout(reset, resetTimeout);
+    return false;
+}
+
+function start() {
+    started = new Date();
+    clicks = 0;
+    cpscounter.style.opacity = 1;
+    this.onmousedown = count;
+    this.onmousedown();
+    return false;
+}
+
+function reset() {
+    button1.onmousedown = start;
+    button2.onmousedown = start;
+    cpscounter.style.opacity = 0.3;
+}
+
+reset();
+
 //Game Loops
 window.setInterval(() => {
     if (totalresources >= resourcepopupvalue){
@@ -524,8 +568,6 @@ prestigebutton.addEventListener("click", () => {
  uppickaxepowermultiplierbought = 0;
  upautostonemultiplierbought = 0;
  upautochopperdividebought = 0;
- prestigeup1bought = 0;
- prestigeup2bought = 0;
  gamesavedago = 0;
  autointerval;
  autointervalvalue = 1000;
