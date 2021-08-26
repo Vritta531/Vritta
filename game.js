@@ -29,17 +29,21 @@ const prestigeup2 = document.querySelector("#prestigeup2");
 const upautostonemultiplier = document.querySelector("#upautostonemultiplier");
 const languagechange = document.querySelector("#languagechange");
 const upautochopperdivide = document.querySelector("#upautochopperdivide");
+const upmoreaxepoweronbuy = document.querySelector("#upmoreaxepoweronbuy");
+const upmoreautochoppersonbuy = document.querySelector("#upmoreautochoppersonbuy");
 var popupdiv = document.getElementById("popupdiv");
 
 
 //Game Variables
 var wood = 0;
 var auto = 0;
+var addautochopper = 1;
 var autopower = 0;
 var autodivide = 1;
 var autobasecost = 10;
 var autocost = autobasecost/autodivide;
 var additionalclickpower = 0;
+var addaxepower = 1;
 var clickpowermultiplier = 1;
 var clickpower = ((1+additionalclickpower)*clickpowermultiplier);
 var clickpowercost = 30;
@@ -51,6 +55,7 @@ var autostonecost = 45;
 var pickaxepowercost = 100;
 var additionalpickaxepower = 0;
 var pickaxepowermultiplier = 1;
+var addpickaxepower = 1;
 var pickaxepower = ((1+additionalpickaxepower)*pickaxepowermultiplier);
 var totalresources = 0;
 var automultiplier = 1;
@@ -67,6 +72,8 @@ var upclickpowermultiplierbought1 = 0;
 var uppickaxepowermultiplierbought = 0;
 var upautostonemultiplierbought = 0;
 var upautochopperdividebought = 0;
+var upaddaxepowerbought = 0;
+var upmoreautochoppersonbuybought = 0;
 var prestigeup1bought = 0;
 var prestigeup2bought = 0;
 var gamesavedago = 0;
@@ -83,6 +90,7 @@ isthegamesaved = JSON.parse(localStorage.getItem('isthegamesaved'));
 if (isthegamesaved == 1){
 wood = JSON.parse(localStorage.getItem('wood'));
 auto = JSON.parse(localStorage.getItem('auto'));
+addautochopper = JSON.parse(localStorage.getItem('addautochopper'));
 autointervalvalue = JSON.parse(localStorage.getItem('autointervalvalue'));
 autopower = JSON.parse(localStorage.getItem('autopower'));
 autobasecost = JSON.parse(localStorage.getItem('autobasecost'));
@@ -106,16 +114,20 @@ progressbardivide = JSON.parse(localStorage.getItem('progressbardivide'));
 progressbarvalue = JSON.parse(localStorage.getItem('progressbarvalue'));
 resourcepopupvalue = JSON.parse(localStorage.getItem('resourcepopupvalue'));
 uppickaxebought = JSON.parse(localStorage.getItem('uppickaxebought'));
+addaxepower = JSON.parse(localStorage.getItem('addaxepower'));
+addpickaxepower = JSON.parse(localStorage.getItem('addpickaxepower'));
 upclickpowermultiplierbought = JSON.parse(localStorage.getItem('upclickpowermultiplierbought'));
 upautochoppermultiplierbought = JSON.parse(localStorage.getItem('upautochoppermultiplierbought'));
 upclickpowermultiplierbought1 = JSON.parse(localStorage.getItem('upclickpowermultiplierbought1'));
 value = JSON.parse(localStorage.getItem('value'));
 uppickaxepowermultiplierbought = JSON.parse(localStorage.getItem('uppickaxepowermultiplierbought'));
 money = JSON.parse(localStorage.getItem('money'));
+upaddaxepowerbought = JSON.parse(localStorage.getItem('upaddaxepowerbought'));
 prestigeup1bought = JSON.parse(localStorage.getItem('prestigeup1bought'));
 prestigeup2bought = JSON.parse(localStorage.getItem('prestigeup2bought'));
 upautostonemultiplierbought = JSON.parse(localStorage.getItem('upautostonemultiplierbought'));
 upautochopperdividebought = JSON.parse(localStorage.getItem('upautochopperdividebought'));
+upmoreautochoppersonbuybought = JSON.parse(localStorage.getItem('upmoreautochoppersonbuybought'));
 };
 
 //Loading upgrades state . bought or not
@@ -127,7 +139,9 @@ if (uppickaxepowermultiplierbought == 1){uppickaxepowermultiplier.style.display 
 if (prestigeup1bought == 1){prestigeup1.style.display = 'none';};
 if (prestigeup2bought == 1){prestigeup2.style.display = 'none';};
 if (upautostonemultiplierbought == 1){upautostonemultiplier.style.display = 'none';};
-if (upautochopperdividebought == 1){upautochopperdivide.style.display = 'none'}
+if (upautochopperdividebought == 1){upautochopperdivide.style.display = 'none'};
+if (upaddaxepowerbought == 1){upmoreaxepoweronbuy.style.display = 'none'};
+if (upmoreautochoppersonbuybought == 1){upmoreautochoppersonbuy.style.display = 'none'};
 
 //Functions
 const updateUI = () => {
@@ -139,7 +153,7 @@ const updateUI = () => {
     progressbarvalue = ((totalresources/1000)/progressbardivide);
     clickpowervalue.innerHTML = `Axe power: ${clickpower}`;
     autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
-    clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
+    clickpowerbutton.innerHTML = `Increase axe power by ${addaxepower} || ${clickpowercost} wood`;
     autostonecollector.innerHTML = `Automatic stone collector || ${autostonecost} stone`;
     autostonecollectorstat.innerHTML = `Automatic stone collectors: ${autostone}`;
     pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
@@ -149,7 +163,7 @@ const updateUI = () => {
     moneyifprestige = totalresources/10000;
     autocost = autobasecost/autodivide;
     moneyifprestigetext.innerHTML = `You will get ${moneyifprestige} Money `;
-    moneytext.innerHTML = `You have ${money} Money`
+    moneytext.innerHTML = `You have ${money} Money`;
 };
 const mouseout = () => {
     infoText.innerHTML = `Hover over something for more info`;
@@ -190,8 +204,13 @@ const savegame = () => {
     localStorage.setItem('prestigeup2bought', JSON.stringify(prestigeup2bought));
     localStorage.setItem('upautostonemultiplierbought', JSON.stringify(upautostonemultiplierbought));
     localStorage.setItem('upautochopperdividebought', JSON.stringify(upautochopperdividebought));
+    localStorage.setItem('upmoreautochoppersonbuybought', JSON.stringify(upmoreautochoppersonbuybought));
+    localStorage.setItem('upaddaxepowerbought', JSON.stringify(upaddaxepowerbought));
+    localStorage.setItem('addaxepower', JSON.stringify(addaxepower));
+    localStorage.setItem('addpickaxepower', JSON.stringify(addpickaxepower));
     localStorage.setItem('value', JSON.stringify(value));
     localStorage.setItem('money', JSON.stringify(money));
+    localStorage.setItem('addautochopper', JSON.stringify(addautochopper));
         isthegamesaved = 1;
     localStorage.setItem('isthegamesaved', JSON.stringify(isthegamesaved));
     gamesavedago = 0;
@@ -336,7 +355,7 @@ moneybutton.addEventListener("mouseout", () => {
 autoclickerbutton.addEventListener("click", () => {
     if(wood >= autocost) {
         wood -= autocost;
-        auto += 1;
+        auto += addautochopper;
         autobasecost = autobasecost*2;
         autoclickerbutton.innerHTML = `Autochopper || ${autocost} wood`;
     }
@@ -353,14 +372,14 @@ autoclickerbutton.addEventListener("mouseout", () => {
 clickpowerbutton.addEventListener("click", () => {
     if(wood >= clickpowercost) {
         wood -= clickpowercost;
-        additionalclickpower += 1;
+        additionalclickpower += addaxepower;
         clickpowercost = clickpowercost*2;
         clickpowerbutton.innerHTML = `Increase axe power by 1 || ${clickpowercost} wood`;
     }
     else{popupdisplay();}
 });
 clickpowerbutton.addEventListener("mouseover", () => {
-    infoText.innerHTML = `Increases axe power by 1`;
+    infoText.innerHTML = `Increases axe power by ${addaxepower}`;
 });
 clickpowerbutton.addEventListener("mouseout", () => {
     mouseout();
@@ -407,7 +426,7 @@ autostonecollector.addEventListener("mouseout", () => {
 pickaxepowerbutton.addEventListener("click", () => {
     if(stone >= pickaxepowercost) {
         stone -= pickaxepowercost;
-        additionalpickaxepower += 1;
+        additionalpickaxepower += addpickaxepower;
         pickaxepowercost = pickaxepowercost*2;
         pickaxepowerbutton.innerHTML = `Increase pickaxeaxe power by 1 || ${pickaxepowercost} stone`;
         pickaxepowerstat.innerHTML = `Pickaxe power: ${pickaxepower}`;
@@ -506,6 +525,30 @@ upautochopperdivide.addEventListener("click", () => {
     else{popupdisplay();}
 });
 
+//Increase additional axe power on buy
+upmoreaxepoweronbuy.addEventListener("click", () => {
+    if(wood>=45000 && stone>=30000){
+        wood-=45000;
+        stone-=30000;
+        addaxepower += 1;
+        upmoreaxepoweronbuy.style.display = 'none'
+        upaddaxepowerbought = 1;
+    }
+    else{popupdisplay();}
+});
+
+//Increase autochoppers on buy
+upmoreautochoppersonbuy.addEventListener("click", () => {
+    if(wood>=60000 && stone>=45000){
+        wood-=60000;
+        stone-=45000;
+        addautochopper += 1;
+        upmoreautochoppersonbuy.style.display = 'none'
+        upmoreautochoppersonbuybought = 1;
+    }
+    else{popupdisplay();}
+});
+
 //Prestige Upgrades____________________________________________________
 //1
 prestigeup1.addEventListener("click", () => {
@@ -537,12 +580,14 @@ prestigebutton.addEventListener("click", () => {
     money += moneyifprestige;
  wood = 0;
  auto = 0;
+ addautochopper = 1;
  autopower = 0;
  autobasecost = 10;
  autodivide = 1;
  autocost = autobasecost/autodivide;
  additionalclickpower = 0;
  clickpowermultiplier = 1;
+ addaxepower = 1;
  clickpower = ((1+additionalclickpower)*clickpowermultiplier);
  clickpowercost = 30;
  stone = 0;
@@ -553,6 +598,7 @@ prestigebutton.addEventListener("click", () => {
  pickaxepowercost = 100;
  additionalpickaxepower = 0;
  pickaxepowermultiplier = 1;
+ addpickaxepower = 1;
  pickaxepower = ((1+additionalpickaxepower)*pickaxepowermultiplier);
  totalresources = 0;
  automultiplier = 1;
@@ -568,6 +614,8 @@ prestigebutton.addEventListener("click", () => {
  uppickaxepowermultiplierbought = 0;
  upautostonemultiplierbought = 0;
  upautochopperdividebought = 0;
+ upaddaxepowerbought = 0;
+ upmoreautochoppersonbuybought = 0;
  gamesavedago = 0;
  autointerval;
  autointervalvalue = 1000;

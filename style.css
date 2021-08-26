@@ -281,10 +281,18 @@ div{
 }
 
 #upautochopperdivide{
-  color:rgb(216, 191, 48);
+  color: rgb(59, 124, 245);
 }
 
 #moneytext{
   float:left;
   margin-right: 5px;
+}
+
+#upmoreaxepoweronbuy{
+  color:rgb(216, 191, 48);
+}
+
+#upmoreautochoppersonbuy{
+  color: rgb(59, 124, 245);
 }
